@@ -37,6 +37,7 @@ export default class GetUserID extends React.Component {
         if(this.state.userId){
           AsyncStorage.setItem('UserId', this.state.userId);
           this.props.navigation.navigate("GetUserBiometrics");
+          this.setState({ userId: '' })
         }else{
           this.dropdown.alertWithType(
             'error',
@@ -46,6 +47,7 @@ export default class GetUserID extends React.Component {
         }
         
       };
+
   
 
     async componentDidMount() {

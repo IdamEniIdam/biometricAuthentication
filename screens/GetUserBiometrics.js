@@ -27,21 +27,23 @@ export default class Biometrics extends Component {
   state = {
     allowFinger: '',
     compatible: false,
-    fingerprints: false
+    fingerprints: false,
+    getUserId: ''
   };
 
  async componentDidMount() {
     this.checkDeviceForHardware();
-  displayData = async ()=>{  
-    try{  
-      let user = await AsyncStorage.getItem('UserId');  
-      alert(user);  
-    }  
-    catch(error){  
-      alert(error)  
-    }  
-  }  
+    this.getValueFunction()  
   }
+
+  getValueFunction = () => {
+    //function to get the value from AsyncStorage
+    AsyncStorage.getItem('UserId').then(value =>
+      //AsyncStorage returns a promise so adding a callback to get the value
+      this.setState({ getUserId: value })
+      //Setting the value in Text 
+    );
+  };
 
   checkDeviceForHardware = async () => {
     let compatible = await LocalAuthentication.hasHardwareAsync();
@@ -159,16 +161,18 @@ export default class Biometrics extends Component {
 
           <View style={styles.subContainer}>
 
+          <Text style={{fontSize: 25}}>
+              Your UserID is: <Text style={{color: 'green'}}>{this.state.getUserId}</Text>
+              </Text>
+
           <Text>{"\n"}</Text>
                <Text style={{textAlign: 'center', fontSize: 15}}>
-               Place your finger over the touch sensor {"\n"}  for proper fingerprint scanning.
+              Please place your fingerprint over the touch sensor {"\n"}  for proper fingerprint scanning.
                </Text>
                <Text>{"\n"}</Text>
                <Text>{"\n"}</Text>
 
-              <Text>
-              {this.displayData}
-              </Text>
+             
 
         <TouchableOpacity
           value={this.state.allowFinger}
