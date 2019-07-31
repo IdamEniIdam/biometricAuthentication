@@ -1,0 +1,49 @@
+{
+  "expo": {
+    "name": "NIMC Mobile Biometrics",
+    "slug": "nimc_mobile_biometrics",
+    "privacy": "public",
+    "sdkVersion": "33.0.0",
+    "platforms": [
+      "ios",
+      "android",
+      "web"
+    ],
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "android": {
+      "package": "io.ibib.proximity",
+      "permissions": [
+        "CAMERA",
+        "READ_EXTERNAL_STORAGE",
+        "READ_PHONE_STATE",
+        "USE_FINGERPRINT",
+        "WRITE_EXTERNAL_STORAGE"
+      ]
+  
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "ibibio.VSCProximity",
+      "infoPlist": {
+        "NSCameraUsageDescription": "This app uses the camera to scan QR-codes.",
+        "UIBackgroundModes": [
+          "audio"
+        ] 
+      }
+    },
+    "description": "NIMC mobile Biometics ecosystem for Nigerians and residents in Nigeria."
+  }
+}
